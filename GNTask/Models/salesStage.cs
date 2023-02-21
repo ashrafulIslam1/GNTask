@@ -8,7 +8,7 @@ namespace GNTask.Models
         public int stageId { get; set; }
         public string salesStageName { get; set; }
         public string stageName { get; set; }
-        public int stageWeightage { get; set; }
+        public double stageWeightage { get; set; }
 
     }
 }

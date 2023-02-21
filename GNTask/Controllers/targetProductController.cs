@@ -22,7 +22,7 @@ namespace GNTask.Controllers
         {
             ViewBag.CustomarList = _dbContext.UserInformation.Where(x=>x.Status==true).ToList();
             ViewBag.ProductList = _dbContext.ProductService.ToList();
-            //ViewBag.Stage = _dbContext.SalesStage.ToList();
+            ViewBag.SalesStageList = _dbContext.SalesStage.ToList();
             return View();
         }
 
@@ -35,6 +35,23 @@ namespace GNTask.Controllers
             {
                 var data = isvalid.productUnit;
 
+                return Json(data);
+            }
+            return Json(null);
+        }
+
+        public JsonResult GenerateSatgeList(int? id)
+        {
+            if (id != null)
+            {
+                
+                var data = (from s in _dbContext.SalesStage
+                            where s.stageId == id
+                            select new salesStage
+                            {
+                                stageName = s.stageName,
+                                stageWeightage = s.stageWeightage,
+                            });
                 return Json(data);
             }
             return Json(null);

@@ -7,63 +7,68 @@
   <div class="form-row">
 
     @*##########   Select Target(user) part Start    ##########*@
-    <div class="shadow p-3 mb-2 mt-2">
+    <div class="shadow p-3 mt-2">
         <h6>Select Target</h6>
         <hr/>
-        
-        <div class="col-md-4 d-flex">
-            <div>
-                <label class="me-5 pe-5" for="validationFormDate">Form Date</label>
-            </div>
-            <div>
-                <input type="date" class="form-control btn-sm" id="formDate"/>
-            </div>
-            <span validation-for="FromDate" class="text-danger"></span>
-        </div>
+        <div class="row small">
+             <div class="col-md-6 col-lg-6 ">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <label for="validationFormDate">Form Date</label>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <input type="date" class="form-control btn-sm" id="formDate"/>
+                    </div>
+                    <span validation-for="FromDate" class="text-danger"></span>
+                </div>
 
-        <div class="col-md-4 d-flex my-2">
-            <div>
-                <label class="me-5 pe-5" for="validationToDate">To Date</label>
-            </div>
-            <div>
-                <input type="date" class="form-control btn-sm" id="toDate"/>
-            </div>
-            <span validation-for="ToDate" class="text-danger"></span>
-        </div>
+                <div class="row my-1">
+                    <div class="col-lg-6 col-md-6">
+                        <label for="validationToDate">To Date</label>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <input type="date" class="form-control btn-sm" id="toDate"/>
+                    </div>
+                    <span validation-for="ToDate" class="text-danger"></span>
+                </div>
 
-        <div class="col-md-4 d-flex">
-            <div>
-                <label class="me-5 pe-5" for="validationCustomer">Select User</label>
-            </div>
-            <div>
-                <select class="form-control  btn-sm" id="Customarname" required>
-                    <option selected disabled value="">- Select Customar -</option>
-                    @foreach (var item in ViewBag.CustomarList)
-                    {
-                        <option value="@item.userId">@item.userName</option>
-                    }
-                </select>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <label for="validationCustomer">Select User</label>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <select class="form-control  btn-sm" id="Customarname" required>
+                            <option selected disabled value="">- Select Customar -</option>
+                            @foreach (var item in ViewBag.CustomarList)
+                            {
+                                <option value="@item.userId">@item.userName</option>
+                            }
+                        </select>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     @*##########   Select Target(User) part End    ##########*@
 
 
+
+
     @*##########   Target Product and Service part Start    ##########*@
     <div class="shadow p-3 mb-2 mt-2">
         <h6>Target Product and Service</h6>
         <hr/>
-            <div class="row">
+            <div class="row small">
 
                 @*Left grid start*@
                 <div class="col">
-                    <div class="d-flex">
-                        <div>
-                            <label class="me-5 pe-5" for="validationProduct">Select Product/Serivce</label>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <label for="validationProduct">Select Product/Serivce</label>
                         </div>
-                        <div>
+                        <div class="col-lg--6 col-md-6">
                             <select class="form-control btn-sm" id="productName" required>
-                                <option selected disabled value="">-Select Product-</option>
+                                <option selected disabled  value="">-- Select Product --</option>
                                 @foreach (var item in ViewBag.ProductList)
                                 {
                                     <option value="@item.productId">@item.productName</option>
@@ -72,29 +77,29 @@
                         </div>
                     </div>
 
-                    <div class="d-flex my-2">
-                        <div>
-                            <label class="me-5 pe-5" for="validationUnit">Unit</label>
+                    <div class="row my-1">
+                        <div class="col-lg--6 col-md-6">
+                            <label for="validationUnit">Unit</label>
                         </div>
-                        <div>
+                        <div class="col-lg--6 col-md-6">
                             <input type="text" class="form-control btn-sm" id="unit" readonly>
                         </div>
                     </div>
 
-                    <div class="d-flex my-2">
-                        <div>
-                            <label class="me-5 pe-5" for="validationTargetVolume">Target Volume</label>
+                    <div class="row my-1">
+                        <div class="col-lg--6 col-md-6">
+                            <label for="validationTargetVolume">Target Volume</label>
                         </div>
-                        <div>
+                        <div class="col-lg--6 col-md-6">
                             <input type="text" class="form-control btn-sm" id="targetVolume" placeholder="Volume">
                         </div>
                     </div>
 
-                     <div class="d-flex my-2">
-                        <div>
-                            <label class="me-5 pe-5" for="validationTargetAmount">Target Amount</label>
+                    <div class="row">
+                        <div class="col-lg--6 col-md-6">
+                            <label for="validationTargetAmount">Target Amount</label>
                         </div>
-                        <div>
+                        <div class="col-lg--6 col-md-6">
                             <input type="text" class="form-control btn-sm" id="targetAmount" placeholder="Amount">
                         </div>
                     </div>
@@ -104,35 +109,35 @@
 
                 @*Right grid start*@
                 <div class="col">
-                    <div class="d-flex">
-                        <div>
-                            <label class="me-5 pe-5" for="validationProduct">Select Product/Serivce</label>
+                    <div class="row">
+                        <div class="col-lg--6 col-md-6">
+                            <label for="validationSalesStage">Sales Stage</label>
                         </div>
-                        <div>
+                        <div class="col-lg--6 col-md-6">
                             <select class="form-control btn-sm" id="productlist" required>
-                                <option selected disabled value="">-Select Product-</option>
-                                @foreach (var item in ViewBag.ProductList)
+                                <option selected disabled value="">-- Sales Stage --</option>
+                                @foreach (var item in ViewBag.SalesStageList)
                                 {
-                                    <option value="@item.productId">@item.productName</option>
+                                    <option value="@item.stageId">@item.salesStageName</option>
                                 }
                             </select>
                         </div>
                     </div>
 
-                    <div class="d-flex my-2">
-                        <div>
-                            <label class="me-5 pe-5" for="validationStageName">Stage Name</label>
+                    <div class="row my-1">
+                        <div class="col-lg--6 col-md-6">
+                            <label for="validationStageName">Stage Name</label>
                         </div>
-                        <div>
+                        <div class="col-lg--6 col-md-6">
                             <input type="text" class="form-control btn-sm" id="stageName" readonly>
                         </div>
                     </div>
 
-                    <div class="d-flex">
-                        <div>
-                            <label class="me-5 pe-5" for="validationStageWeightage">Stage Weightage</label>
+                    <div class="row">
+                        <div class="col-lg--6 col-md-6">
+                            <label for="validationStageWeightage">Stage Weightage</label>
                         </div>
-                        <div>
+                        <div class="col-lg--6 col-md-6">
                             <input type="text" class="form-control btn-sm" id="stageWeightage" readonly>
                         </div>
                     </div>
@@ -144,33 +149,39 @@
     @*##########   Target Product and Service part End    ##########*@
 
 
+
+
+    @*##########   Target Product and Service Table start    ##########*@
     <div class="card border">
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table id="detailsTable" class="table table-danger table-bordered table-hover">
-                        <thead class="table-light">
-                            <tr class="text-center small">
-                                <th>Sl#</th>
-                                <th style="width:20%">Select Product/Target</th>
-                                <th>Unit</th>
-                                <th style="width:13%">Target Volume</th>
-                                <th style="width:13%">Target Amount</th>
-                                <th style="width:13%">Sales Stage</th>
-                                <th style="width:13%">Stage Name</th>
-                                <th style="width:13%">Stage Weightage</th>
-                                <th style="width:10%">Update</th>
-                                <th style="width:10%">Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
-            </div>
+        <div class="card-body">
+           <div class="table-responsive">
+              <table id="btable" class="table table-bordered">
+                 <thead class="table-light">
+                    <tr class="text-center small">
+                        <th>Sl#</th>
+                        <th style="width:20%">Select Product/Target</th>
+                        <th>Unit</th>
+                        <th style="width:13%">Target Volume</th>
+                        <th style="width:13%">Target Amount</th>
+                        <th style="width:13%">Sales Stage</th>
+                        <th style="width:13%">Stage Name</th>
+                        <th style="width:13%">Stage Weightage</th>
+                        <th style="width:10%">Update</th>
+                        <th style="width:10%">Delete</th>
+                    </tr>
+                 </thead>
+                 <tbody>
+                 </tbody>
+              </table>
+           </div>
         </div>
+    </div>
+    @*##########   Target Product and Service Table End    ##########*@
   </div>
    
   <br/>
 
+  @*##########   Final Submit and Refresh button start    ##########*@
   <div class="d-flex">
       <div class="me-2">
           <button class="btn btn-secondary rounded-1 text-end btn-sm" type="submit"> <i class="bi bi-card-list"></i> Save</button>
@@ -179,12 +190,17 @@
           <button type="submit" value="Refresh" name="Test" class="btn btn-secondary rounded-1 text-end btn-sm"> <i class="bi bi-arrow-repeat"></i> Refresh </button>
       </div>
   </div>
+  @*##########   Final Submit and Refresh button start    ##########*@
+
 </form>
 
+
+@*##########   JS start    ##########*@
 <script src="jquery-3.6.3.min.js"></script>
 
-@section Scripts{
 
+
+@section Scripts{
         <script>
               $("#productName").on('change', function () {
               var id = $(this).val();
@@ -194,6 +210,19 @@
                     success: function (data) {
                         console.log(data);
                         $('#unit').val(data);
+                    }
+                });
+              });
+
+              $("#productlist").on('change', function () {
+              var id = $(this).val();
+                $.ajax({
+                    type: 'GET',
+                    url: '/targetProduct/GenerateSatgeList?id=' + id,
+                    success: function (data) {
+                        console.log(data);
+                        $('#stageName').val(data.stageName);
+                        $('#stageWeightage').val(data.stageWeightage);
                     }
                 });
               });
