@@ -6,6 +6,7 @@ namespace GNTask.Models
     {
         [Key]
         public int userId { get; set; }
-        public string userName { get; set; }
+        public string? userName { get; set; }
+        public bool Status { get; set; }
     }
 }

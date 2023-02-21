@@ -4,6 +4,7 @@ using GNTask.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GNTask.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230220123744_add targetproductservice")]
+    partial class addtargetproductservice
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -78,11 +80,11 @@ namespace GNTask.Data.Migrations
                     b.Property<string>("Unit")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("serviveId")
-                        .HasColumnType("int");
+                    b.Property<string>("salesStage")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("stageId")
-                        .HasColumnType("int");
+                    b.Property<string>("selectProduct")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("stageName")
                         .HasColumnType("nvarchar(max)");

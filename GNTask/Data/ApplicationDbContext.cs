@@ -14,5 +14,6 @@ namespace GNTask.Data
         public DbSet<userInfo> UserInformation { get; set; }
         public DbSet<salesStage> SalesStage { get; set; }
         public DbSet<productService> ProductService { get; set; }
+        public DbSet<targetProduct> TargetProductService { get; set; }
     }
 }
