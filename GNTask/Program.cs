@@ -1,5 +1,5 @@
 using GNTask.Data;
-using GNTask.Services;
+//using GNTask.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,7 +15,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddScoped<targetProductService>();
+//builder.Services.AddScoped<targetProductService>();
 
 var app = builder.Build();
 
