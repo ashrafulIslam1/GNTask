@@ -40,18 +40,14 @@ namespace GNTask.Controllers
             return Json(null);
         }
 
-        public JsonResult GenerateSatgeList(int? id)
+        public JsonResult GenerateStage(int id)
         {
-            if (id != null)
+            var isvalid = _dbContext.SalesStage.Where(x => x.stageId == id).SingleOrDefault();
+
+            if (isvalid != null)
             {
-                
-                var data = (from s in _dbContext.SalesStage
-                            where s.stageId == id
-                            select new salesStage
-                            {
-                                stageName = s.stageName,
-                                stageWeightage = s.stageWeightage,
-                            });
+                var data = isvalid;
+
                 return Json(data);
             }
             return Json(null);

@@ -3,31 +3,32 @@
 @{
     ViewData["Title"] = "Index";
 }
-<form class="needs-validation" novalidate>
-  <div class="form-row">
 
+<div class="form-row">
     @*##########   Select Target(user) part Start    ##########*@
-    <div class="shadow p-3 mt-2">
+    <div class="shadow p-3 mb-2 mt-2">
         <h6>Select Target</h6>
-        <hr/>
+        <hr />
+
         <div class="row small">
-             <div class="col-md-6 col-lg-6 ">
+            <div class="col-md-6 col-lg-6">
+
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
                         <label for="validationFormDate">Form Date</label>
                     </div>
                     <div class="col-lg-6 col-md-6">
-                        <input type="date" class="form-control btn-sm" id="formDate"/>
+                        <input type="date" class="form-control btn-sm" id="formDate" />
                     </div>
                     <span validation-for="FromDate" class="text-danger"></span>
                 </div>
 
-                <div class="row my-1">
+                <div class="row">
                     <div class="col-lg-6 col-md-6">
                         <label for="validationToDate">To Date</label>
                     </div>
                     <div class="col-lg-6 col-md-6">
-                        <input type="date" class="form-control btn-sm" id="toDate"/>
+                        <input type="date" class="form-control btn-sm" id="toDate" />
                     </div>
                     <span validation-for="ToDate" class="text-danger"></span>
                 </div>
@@ -52,182 +53,254 @@
     @*##########   Select Target(User) part End    ##########*@
 
 
-
-
     @*##########   Target Product and Service part Start    ##########*@
     <div class="shadow p-3 mb-2 mt-2">
         <h6>Target Product and Service</h6>
-        <hr/>
-            <div class="row small">
+        <hr />
+        <div class="row small">
 
-                @*Left grid start*@
-                <div class="col">
-                    <div class="row">
+            @*Left grid start*@
+            <div class="col">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                          <label for="validationProduct">Select Product/Serivce</label>
+                     </div>
+                    <div class="col-lg-6 col-md-6">
+                          <select class="form-control btn-sm" id="productName" required>
+                              <option selected disabled value="">-Select Product-</option>
+                              @foreach (var item in ViewBag.ProductList)
+                               {
+                                  <option value="@item.productId">@item.productName</option>
+                               }
+                          </select>
+                     </div>
+                </div>
+
+                <div class="row my-1">
                         <div class="col-lg-6 col-md-6">
-                            <label for="validationProduct">Select Product/Serivce</label>
-                        </div>
-                        <div class="col-lg--6 col-md-6">
-                            <select class="form-control btn-sm" id="productName" required>
-                                <option selected disabled  value="">-- Select Product --</option>
-                                @foreach (var item in ViewBag.ProductList)
-                                {
-                                    <option value="@item.productId">@item.productName</option>
-                                }
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="row my-1">
-                        <div class="col-lg--6 col-md-6">
                             <label for="validationUnit">Unit</label>
                         </div>
-                        <div class="col-lg--6 col-md-6">
+                        <div class="col-lg-6 col-md-6">
                             <input type="text" class="form-control btn-sm" id="unit" readonly>
                         </div>
-                    </div>
+                </div>
 
-                    <div class="row my-1">
-                        <div class="col-lg--6 col-md-6">
-                            <label for="validationTargetVolume">Target Volume</label>
-                        </div>
-                        <div class="col-lg--6 col-md-6">
-                            <input type="text" class="form-control btn-sm" id="targetVolume" placeholder="Volume">
-                        </div>
+                <div class="row my-1">
+                    <div class="col-lg-6 col-md-6">
+                         <label for="validationTargetVolume">Target Volume</label>
                     </div>
-
-                    <div class="row">
-                        <div class="col-lg--6 col-md-6">
-                            <label for="validationTargetAmount">Target Amount</label>
-                        </div>
-                        <div class="col-lg--6 col-md-6">
-                            <input type="text" class="form-control btn-sm" id="targetAmount" placeholder="Amount">
-                        </div>
+                    <div class="col-lg-6 col-md-6">
+                         <input type="text" class="form-control btn-sm" id="targetVolume" placeholder="Volume">
                     </div>
                 </div>
-                @*Left grid start*@
 
-
-                @*Right grid start*@
-                <div class="col">
-                    <div class="row">
-                        <div class="col-lg--6 col-md-6">
-                            <label for="validationSalesStage">Sales Stage</label>
-                        </div>
-                        <div class="col-lg--6 col-md-6">
-                            <select class="form-control btn-sm" id="productlist" required>
-                                <option selected disabled value="">-- Sales Stage --</option>
-                                @foreach (var item in ViewBag.SalesStageList)
-                                {
-                                    <option value="@item.stageId">@item.salesStageName</option>
-                                }
-                            </select>
-                        </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                         <label for="validationTargetAmount">Target Amount</label>
                     </div>
-
-                    <div class="row my-1">
-                        <div class="col-lg--6 col-md-6">
-                            <label for="validationStageName">Stage Name</label>
-                        </div>
-                        <div class="col-lg--6 col-md-6">
-                            <input type="text" class="form-control btn-sm" id="stageName" readonly>
-                        </div>
+                    <div class="col-lg-6 col-md-6">
+                         <input type="text" class="form-control btn-sm" id="targetAmount" placeholder="Amount">
                     </div>
-
-                    <div class="row">
-                        <div class="col-lg--6 col-md-6">
-                            <label for="validationStageWeightage">Stage Weightage</label>
-                        </div>
-                        <div class="col-lg--6 col-md-6">
-                            <input type="text" class="form-control btn-sm" id="stageWeightage" readonly>
-                        </div>
-                    </div>
-                </div>
-                @*Right grid end*@
+                </div>   
             </div>
-            <button class="btn btn-secondary rounded-1 text-end btn-sm" type="submit"> <i class="bi bi-plus-square"></i> Add</button>
+            @*Left grid start*@
+
+
+            @*Right grid start*@
+            <div class="col">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <label for="validationProduct">Salese Stage</label>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <select class="form-control btn-sm" id="productlist" required>
+                            <option selected disabled value="">-Select Stage-</option>
+                            @foreach (var item in ViewBag.SalesStageList)
+                            {
+                                <option value="@item.stageId">@item.salesStageName</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row my-1">
+                    <div class="col-lg-6 col-md-6">
+                        <label for="validationStageName">Stage Name</label>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <input type="text" class="form-control btn-sm" id="stageName" readonly>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <label for="validationStageWeightage">Stage Weightage</label>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <input type="text" class="form-control btn-sm" id="stageWeightage" readonly>
+                    </div>
+                </div>
+            </div>
+            @*Right grid end*@
+        </div>
+        <button class="btn btn-secondary rounded-1 text-end btn-sm" id="btnAdd"> <i class="bi bi-plus-square"></i> Add</button>
     </div>
     @*##########   Target Product and Service part End    ##########*@
-
 
 
 
     @*##########   Target Product and Service Table start    ##########*@
     <div class="card border">
         <div class="card-body">
-           <div class="table-responsive">
-              <table id="btable" class="table table-bordered">
-                 <thead class="table-light">
-                    <tr class="text-center small">
-                        <th>Sl#</th>
-                        <th style="width:20%">Select Product/Target</th>
-                        <th>Unit</th>
-                        <th style="width:13%">Target Volume</th>
-                        <th style="width:13%">Target Amount</th>
-                        <th style="width:13%">Sales Stage</th>
-                        <th style="width:13%">Stage Name</th>
-                        <th style="width:13%">Stage Weightage</th>
-                        <th style="width:10%">Update</th>
-                        <th style="width:10%">Delete</th>
-                    </tr>
-                 </thead>
-                 <tbody>
-                 </tbody>
-              </table>
-           </div>
+            <div class="table-responsive">
+                <table id="detailsTable" class="table table-danger table-bordered table-hover">
+                    <thead class="table-light">
+                        <tr class="text-center small">
+                            <th>Sl#</th>
+                            <th style="width:20%">Select Product/Target</th>
+                            <th>Unit</th>
+                            <th style="width:13%">Target Volume</th>
+                            <th style="width:13%">Target Amount</th>
+                            <th style="width:13%">Sales Stage</th>
+                            <th style="width:13%">Stage Name</th>
+                            <th style="width:13%">Stage Weightage</th>
+                            <th style="width:10%">Update</th>
+                            <th style="width:10%">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
         </div>
     </div>
-    @*##########   Target Product and Service Table End    ##########*@
-  </div>
-   
-  <br/>
+   @*##########   Target Product and Service Table End    ##########*@
+</div>
 
-  @*##########   Final Submit and Refresh button start    ##########*@
-  <div class="d-flex">
-      <div class="me-2">
-          <button class="btn btn-secondary rounded-1 text-end btn-sm" type="submit"> <i class="bi bi-card-list"></i> Save</button>
-      </div>
-      <div>
-          <button type="submit" value="Refresh" name="Test" class="btn btn-secondary rounded-1 text-end btn-sm"> <i class="bi bi-arrow-repeat"></i> Refresh </button>
-      </div>
-  </div>
-  @*##########   Final Submit and Refresh button start    ##########*@
+<br />
 
-</form>
+@*##########   Final Submit and Refresh button start    ##########*@
+<div class="d-flex">
+    <div class="me-2">
+        <button class="btn btn-secondary rounded-1 text-end btn-sm"> <i class="bi bi-card-list"></i> Save</button>
+    </div>
+    <div>
+        <button value="Refresh" name="Test" class="btn btn-secondary rounded-1 text-end btn-sm"> <i class="bi bi-arrow-repeat"></i> Refresh </button>
+    </div>
+</div>
+@*##########   Final Submit and Refresh button start    ##########*@
 
 
 @*##########   JS start    ##########*@
 <script src="jquery-3.6.3.min.js"></script>
 
-
-
 @section Scripts{
-        <script>
-              $("#productName").on('change', function () {
-              var id = $(this).val();
-                $.ajax({
-                    type: 'GET',
-                    url: '/targetProduct/GenerateUnit?id=' + id,
-                    success: function (data) {
-                        console.log(data);
-                        $('#unit').val(data);
-                    }
-                });
-              });
 
-              $("#productlist").on('change', function () {
-              var id = $(this).val();
-                $.ajax({
-                    type: 'GET',
-                    url: '/targetProduct/GenerateSatgeList?id=' + id,
-                    success: function (data) {
-                        console.log(data);
-                        $('#stageName').val(data.stageName);
-                        $('#stageWeightage').val(data.stageWeightage);
-                    }
-                });
-              });
+    <script>
+        $("#productName").on('change', function () {
+            var id = $(this).val();
+            $.ajax({
+                type: 'GET',
+                url: '/targetProduct/GenerateUnit?id=' + id,
+                success: function (data) {
+                    //console.log(data);
+                    $('#unit').val(data);
+                }
+            });
+        });
 
-        </script>
 
-            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        $("#productlist").on('change', function () {
+            var id = $(this).val();
+            $.ajax({
+                type: 'GET',
+                url: '/targetProduct/GenerateStage?id=' + id,
+                success: function (data) {
+                    //console.log(data);
+                    $('#stageName').val(data.stageName);
+                    $('#stageWeightage').val(data.stageWeightage);
+
+                }
+            });
+        });
+        var sl = 1;
+        $("#btnAdd").click(function () {
+            //console.log("Button click");
+            var targetVolume = $("#targetVolume").val();
+            var unit = $("#unit").val();
+            var product = $('#productName option:selected').text();
+            var targetAmount = $("#targetAmount").val();
+            var salesStage = $('#productlist option:selected').text();
+            var stageName = $('#stageName').val();
+            var stageWeightage = $('#stageWeightage').val();
+            var pID = $('#productName').val();
+            var sId = $('#productlist').val();
+            if (!pID || !sId) {
+                toastr.warning('Please select data from the service section!!!');
+                return;
+            }
+            var table = document.getElementById("detailsTable");
+            var tblLength = table.rows.length;
+            //console.log(tblLength);
+            var row = table.insertRow(tblLength);
+            
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            var cell6 = row.insertCell(5);
+            var cell7 = row.insertCell(6);
+            var cell8 = row.insertCell(7);
+            var cell9 = row.insertCell(8);
+            var cell10 = row.insertCell(9);
+
+            cell1.innerHTML = tblLength;
+            var aa = cell1.innerHTML;
+            //console.log("aa",aa)
+            cell2.innerHTML = product;
+            cell3.innerHTML = unit;
+            cell4.innerHTML = targetVolume;
+            cell5.innerHTML = targetAmount;
+            cell6.innerHTML = salesStage;
+            cell7.innerHTML = stageName;
+            cell8.innerHTML = stageWeightage;
+            cell9.innerHTML = '<button value="Refresh" name="Test" class="btn btn-secondary rounded-1 text-end btn-sm" onClick="tableRowUpdate(' + aa + ')">Update</button>';
+            cell10.innerHTML = '<button value="Refresh" name="Test" class="btn btn-danger rounded-1 text-end btn-sm" onClick="tableRowDelete(' + aa + ')">Delete</button>';
+            //resetTextBox();
+            sl++;
+            resetTextBox();
+
+        });
+        function resetTextBox() {
+
+            $('#productName').prop('selectedIndex', 0);
+            $('#productlist').prop('selectedIndex', 0);
+            $("#targetVolume").val("");
+            $("#unit").val("");
+            $("#targetAmount").val("");
+            $('#stageName').val("");
+            $('#stageWeightage').val("");
+        }
+
+        function tableRowUpdate(row)
+        {
+            var table = document.getElementById("detailsTable");
+            table.updateRow(row);
+            //console.log(row);
+        }
+
+        function tableRowDelete(row) {
+
+           // 
+            var table = document.getElementById("detailsTable");
+            table.deleteRow(row);
+            //console.log(row);
+
+        }
+
+    </script>
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
