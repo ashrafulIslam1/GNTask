@@ -1,4 +1,4 @@
-﻿@model GNTask.ViewModels.targetProductViewModel
+﻿@model GNTask.Models.targetProduct
 
 @{
     ViewData["Title"] = "Index";
@@ -181,7 +181,7 @@
 @*##########   Final Submit and Refresh button start    ##########*@
 <div class="d-flex">
     <div class="me-2">
-        <button class="btn btn-secondary rounded-1 text-end btn-sm"> <i class="bi bi-card-list"></i> Save</button>
+        <button class="btn btn-secondary rounded-1 text-end btn-sm" id="btnSave"> <i class="bi bi-card-list"></i> Save</button>
     </div>
     <div>
         <button value="Refresh" name="Test" class="btn btn-secondary rounded-1 text-end btn-sm"> <i class="bi bi-arrow-repeat"></i> Refresh </button>
@@ -295,8 +295,54 @@
             var table = document.getElementById("detailsTable");
             table.deleteRow(row);
             //console.log(row);
-
         }
+
+        $("#btnSave").click(function () {
+            
+            var user = {
+                userId : $('#Customarname option:selected').val(),
+                fromDate : $("#fromDate").val(),
+                toDate : $("#toDate").val()
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: '/targetProduct/SalesTargetMaster',
+                data : {data : user},
+                success: function (user) {
+                    //console.log(user);
+                    Reset();
+                }
+            });
+
+            var productService = new Array();
+            $("#detailsTable TR").each(function () {
+               var row = $(this);
+                    var selsp = {};
+
+                    selsp.serviceProductId = row.find("TD").eq(1).val();
+                    selsp.Unit = row.find("TD").eq(2).val();
+                    selsp.targetVolume = row.find("TD").eq(3).val();
+                    selsp.targetAmount = row.find("TD").eq(4).val();
+                    selsp.salesStageId = row.find("TD").eq(5).val();
+                    selsp.stageName = row.find("TD").eq(6).val();
+                    selsp.stageWeightage = row.find("TD").eq(7).val();
+
+                    SalesProduct.push(selsp);
+                });
+             var mydata = {};
+             mydata.selsp = productService;
+
+             $.ajax({
+                 type: 'POST',
+                 url: '/targetProduct/SalesTargetDetails',
+                 data : {data : mydata},
+                 success: function () {
+                      //console.log(mydata);
+                      Reset();
+                  }
+              });
+        });
 
     </script>
 

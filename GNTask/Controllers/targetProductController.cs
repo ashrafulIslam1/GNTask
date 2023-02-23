@@ -53,12 +53,30 @@ namespace GNTask.Controllers
 
         public void SalesTargetMaster(Sales_Target_Master obj)
         {
-            _dbContext.Database.ExecuteSqlRaw($"Sales_TargetDetails_Save_SP {obj.userId}, {obj.fromDate}, {obj.toDate}");
+
+            _dbContext.Database.ExecuteSqlRaw($"Sales_TargetMaster_Save_SP {obj.userId}, {obj.fromDate}, {obj.toDate}");
         }
 
-        public void SalesTargetDetails(Sales_Target_Details obj)
+        public void SalesTargetDetails(Sales_Target_DetailsVM data)
         {
-            _dbContext.Database.ExecuteSqlRaw($"Sales_TargetMaster_Save_SP {obj.serviceProductId}, {obj.Unit}, {obj.targetVolume}, {obj.targetAmount}, {obj.salesStageId}, {obj.stageName}, {obj.stageWeightage}");
+            if (data != null)
+            {
+                foreach (var item in data.selsp)
+                {
+                    var selessp = new Sales_Target_Details()
+                    {
+                        serviceProductId = item.serviceProductId,
+                        Unit = item.Unit,
+                        targetVolume = item.targetVolume,
+                        targetAmount = item.targetAmount,
+                        salesStageId = item.salesStageId,
+                        stageName = item.stageName,
+                        stageWeightage = item.stageWeightage
+                    };
+                    _dbContext.Database.ExecuteSqlRaw($"Sales_TargetDetails_Save_SP {selessp.serviceProductId}, {selessp.Unit}, {selessp.targetVolume}, {selessp.targetAmount}, {selessp.salesStageId}, {selessp.stageName}, {selessp.stageWeightage}");
+                }
+            }
+           
         }
     }
 }
